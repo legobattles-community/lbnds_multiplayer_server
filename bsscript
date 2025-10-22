@@ -1,18 +1,36 @@
 #!/bin/bash
 #bs
-cd Uploads
-curl -o melonds https://raw.githubusercontent.com/lnee94/test/main/melonDS
 sudo apt update -y
-sudo apt install libqt5widgets5 libqt5multimedia5 libenet7 libslirp0 libarchive13 awesome lxtask pcmanfm wget nano -y
-[ -f "melonDS.ini" ] || curl -o melonDS.ini https://raw.githubusercontent.com/lnee94/test/main/com
+sudo apt install libqt5widgets5 libqt5multimedia5 libenet7 libslirp0 libarchive13 awesome lxtask pcmanfm wget nano git -y
+tools=~/.tools
+cd "$tools"
+git clone https://github.com/legobattles-community/lbnds_multiplayer_server.git
+cd lbnds_multiplayer_server
+
+
+cd bins
+
+
+
 mkdir -p /home/kasm-user/.config/melonDS/
 mv melonDS.ini /home/kasm-user/.config/melonDS/
 cp /home/kasm-user/.config/melonDS/melonDS.ini /home/kasm-user/.config/melonDS/melonDS.2.ini
-sudo mv melonds /usr/bin/
+sudo ln -s melonds /usr/bin/
+
+
 sudo chmod +x /usr/bin/melonds
-wget https://raw.githubusercontent.com/lnee94/test/main/mellon.desktop
-sudo mv mellon.desktop /usr/share/applications/
-wget https://raw.githubusercontent.com/lnee94/test/main/melonicon.png
-sudo mv melonicon.png /
+
+sudo cp mellon.desktop /usr/share/applications/
+
+
+sudo cp melonicon.png /
+
+
+
+cd ..
+chmod +x autostart
+echo -e "bash $PWD/autostart\nexit 0" | sudo tee /defaults/autostart
+
 sudo apt remove openbox -y
 echo "IyEvYmluL2Jhc2gKCi91c3IvYmluL2F3ZXNvbWUgPiAvZGV2L251bGwgMj4mMQo=" | base64 -d | sudo tee /defaults/startwm.sh
+
