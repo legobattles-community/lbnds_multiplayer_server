@@ -2,7 +2,7 @@
 Version=1.0
 Name=Melonds
 GenericName=Emulator
-Exec=/home/kasm-user/.tools/melonds
+Exec=/home/kasm-user/.tools/bins/melonds
 Terminal=false
 X-MultipleArgs=false
 Type=Application
